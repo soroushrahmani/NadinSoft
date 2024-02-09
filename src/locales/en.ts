@@ -1,0 +1,28 @@
+export default {
+  dashboard: "Dashboard",
+  todos: "Todos",
+  weather: "Weather",
+  user_info: "User info",
+  log_out: "Log out",
+  the_time_is: "The time is",
+  your_last_activity: "Your last activity",
+  you_are_all_done: "You're all done",
+  good_morning: "Good morning",
+  good_afternoon: "Good afternoon",
+  sweet_dreams: "Sweet dreams",
+  enter_your_name: "Enter Your name",
+  name : "Name",
+  last_name : "Last name",
+  login : "Login",
+  new_todo : "New todo...",
+  more_detail: "More detail . . .",
+  What_should_you_do: "What should you do?",
+  your_city_name : 'Your City Name',
+  your_name : "Your name",
+  your_last_name : "Your last name",
+  change_theme : "change theme",
+  save : "Save",
+  change_language : "Change language",
+} 
+
+ 
