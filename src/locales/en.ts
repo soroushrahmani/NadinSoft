@@ -23,6 +23,7 @@ export default {
   change_theme : "change theme",
   save : "Save",
   change_language : "Change language",
+  search_weather : "Search weather",
 } 
 
  
