@@ -9,20 +9,19 @@ import fa from './locales/fa';
 
 const i18n = createI18n({
   locale: store.state.language as 'en' | 'fa',
-  legacy: false, // set legacy to false
+  legacy: false, 
   messages: { en, fa },
 });
 
-// Set initial direction from local storage
 document.documentElement.dir = localStorage.getItem('direction') || 'ltr';
 
 store.watch(
   (state) => state.language,
   (newLanguage) => {
-    i18n.global.locale.value = newLanguage as 'en' | 'fa'; // use .value in Composition API mode
+    i18n.global.locale.value = newLanguage as 'en' | 'fa'; 
     const newDirection = newLanguage === 'fa' ? 'rtl' : 'ltr';
     document.documentElement.dir = newDirection;
-    localStorage.setItem('direction', newDirection); // save direction to local storage
+    localStorage.setItem('direction', newDirection);
   }
 );
 

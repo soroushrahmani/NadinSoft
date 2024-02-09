@@ -60,15 +60,7 @@ import { useStore } from 'vuex'
 import { useI18n } from 'vue-i18n'
 import SidebarComponent from '../components/SidebarComponent.vue'
 
-interface TodoItem {
-  title: string;
-  notes: string;
-  checked: boolean;
-  focused: boolean;
-  open: boolean;
-  time: number;
-  rawTime: string;
-}
+
 
 export default defineComponent({
   components: {
@@ -101,8 +93,6 @@ export default defineComponent({
 
       updateTime()
       setInterval(updateTime, 1000)
-
-      // Start the countdown timer
       
     })
 

@@ -11,7 +11,8 @@
       type="text"
       v-model="locationName"
       id="text"
-      class="bg-custom-gray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      @keypress.enter="getLatLon"
+      class="bg-custom-gray border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
       required
     />
     <button
@@ -80,17 +81,16 @@ export default {
     };
   },
   methods: {
-  async getLatLon() {
-    // console.log(locationName.value);
-    const weather = await getLocation(locationName.value);
-    // console.log(weather);
-    weatherData.value.currentTemp = Number(weather?.current?.temperature);
-    weatherData.value.weatherCode = Number(weather?.current?.weathercode);
-    weatherData.value.weatherIcon = `/weather-icons/${getIconUrl(weatherData.value.weatherCode)}`;
-    weatherData.value.hourly = weather.hourly;
-    console.log(weatherData);    
-    
-
+    async getLatLon() {
+    try {
+      const weather = await getLocation(locationName.value);
+      weatherData.value.currentTemp = Number(weather?.current?.temperature);
+      weatherData.value.weatherCode = Number(weather?.current?.weathercode);
+      weatherData.value.weatherIcon = `/weather-icons/${getIconUrl(weatherData.value.weatherCode)}`;
+      weatherData.value.hourly = weather.hourly;
+    } catch (error) {
+      alert('City not found. Please try again.');
+    }
   }
 } 
 };

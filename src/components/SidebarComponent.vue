@@ -67,7 +67,7 @@
   </template>
 
 <script lang="ts">
-import { ref, computed, toRefs } from 'vue';
+import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 
@@ -75,7 +75,6 @@ export default {
   setup() {
     const router = useRouter();
     const store = useStore();
-    const sidebar = ref(null); 
 
     const isOpen = ref(false);
 
@@ -93,7 +92,7 @@ export default {
       isOpen.value = !isOpen.value;
     };
 
-    const closeSidebar = () => { // This function will close the sidebar
+    const closeSidebar = () => {
       isOpen.value = false;
     };
 
@@ -102,7 +101,7 @@ export default {
       direction,
       isOpen,
       toggleSidebar,
-      closeSidebar, // Make sure to return the new function
+      closeSidebar,
     };
   },
 };

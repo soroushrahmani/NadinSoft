@@ -1,7 +1,6 @@
 <template>
   <section class="h-screen">
   <div class="h-full">
-    <!-- Left column container with background-->
     <div
       class="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
       <div
@@ -23,12 +22,11 @@
             
           </div>
 
-<br>
-<br>
+                  <br>
+                  <br>
 
 
-          <!-- Email input -->
-          <div class="relative mb-6 mr-12" data-te-input-wrapper-init>
+          <div class="relative mb-6 mr-12 ml-12" data-te-input-wrapper-init>
             <input
               v-model="firstName"
               type="text"
@@ -43,8 +41,7 @@
             </label>
           </div>
 
-          <!-- Last name input -->
-          <div class="relative mb-6 mr-12" data-te-input-wrapper-init>
+          <div class="relative mb-6 mr-12 ml-12" data-te-input-wrapper-init>
             <input
               v-model="lastName"
               type="text"
@@ -61,8 +58,7 @@
             </label>
           </div>
 
-          <!-- Login button -->
-          <div class="text-center lg:text-left">
+          <div class="text-center lg:text-left ml-12">
             <button
               @click="login"
               type="button"

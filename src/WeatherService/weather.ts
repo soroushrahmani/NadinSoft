@@ -26,9 +26,7 @@ interface WeatherData {
   };
 }
 
-export function getWeather(lat: number, lon: number, timezone: string) {
-    //      `https://geocoding-api.open-meteo.com/v1/search?name=${test}&count=10&language=en&format=json`,
-  
+export function getWeather(lat: number, lon: number, timezone: string) {  
   return axios
     .get<WeatherData>(
       "https://api.open-meteo.com/v1/forecast?hourly=temperature_2m,apparent_temperature,precipitation,weathercode,windspeed_10m&temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,precipitation_sum&current_weather=true&temperature_unit=celsius&windspeed_unit=mph&precipitation_unit=inch&timeformat=unixtime",
@@ -52,19 +50,18 @@ export function getWeather(lat: number, lon: number, timezone: string) {
 export function getLocation(locationName: string) {
   console.log(locationName);
   
-return axios
-  .get(
-    `https://geocoding-api.open-meteo.com/v1/search?name=${locationName}&count=10&language=en&format=json`,
-  )
-  .then((data) => {
-    const lat = data.data.results[0].latitude;
-    const lon = data.data.results[0].longitude;
-    return getWeather(lat,lon, 'Europe/London');
-    // return {
-    //   current: data.data.current_weather,
-    //   hourly:  data.data.hourly,
-    // };
-  });
+  return axios
+    .get(
+      `https://geocoding-api.open-meteo.com/v1/search?name=${locationName}&count=10&language=en&format=json`,
+    )
+    .then((data) => {
+      if (!data.data.results || data.data.results.length === 0) {
+        throw new Error('City not found');
+      }
+      const lat = data.data.results[0].latitude;
+      const lon = data.data.results[0].longitude;
+      return getWeather(lat, lon, 'Europe/London');
+    });
 }
 
 addMapping([0, 1], "sun")
@@ -85,7 +82,5 @@ function addMapping(values: Array<number>, icon: string) {
 }
 
 export function getIconUrl(iconCode: number): string {
-  // ../../public/weather-icons/cloud-sun.svg
   return `${ICON_MAP.get(iconCode)}.svg`
 }
-

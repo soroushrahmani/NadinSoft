@@ -14,7 +14,7 @@ export default createStore({
     firstName: localStorage.getItem('firstName') || '',
     lastName: localStorage.getItem('lastName') || '',
     todos: JSON.parse(localStorage.getItem('todos') || '[]') as Todo[],
-    language: localStorage.getItem('language') || 'en', // get language from local storage
+    language: localStorage.getItem('language') || 'en',
   },
   mutations: {
     SET_NAME(state, firstName) {
@@ -39,7 +39,7 @@ export default createStore({
     },
     SET_LANGUAGE(state, language) {
       state.language = language;
-      localStorage.setItem('language', language); // save language to local storage
+      localStorage.setItem('language', language); 
     },
   },
   actions: {
